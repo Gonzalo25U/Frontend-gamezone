@@ -1,0 +1,116 @@
+.nosotros-section {
+  padding: 40px 20px;
+  background-color: #0e0e10; /* fondo oscuro */
+  text-align: center;
+  color: #fff;
+}
+
+.nosotros-header h2 {
+  margin-bottom: 10px;
+  color: #ff1a1a; /* rojo neón */
+  text-shadow: 0 0 5px #ff1a1a, 0 0 15px #ff4d4d;
+  font-size: 2rem;
+}
+
+.nosotros-header p {
+  margin: 0 0 20px 0;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.nosotros-content p {
+  max-width: 700px;
+  margin: 10px auto;
+  line-height: 1.6;
+  color: #ddd;
+  text-shadow: 0 0 3px rgba(255,0,0,0.3);
+}
+
+/* Sección Contacto */
+.contacto-section {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #1c1c1f; /* separa visualmente del nosotros */
+  border-top: 2px solid #ff1a1a;
+}
+
+.contacto-header h2 {
+  margin-bottom: 10px;
+  color: #ff1a1a;
+  text-shadow: 0 0 5px #ff1a1a, 0 0 15px #ff4d4d;
+}
+
+.contacto-header p {
+  margin: 0 0 20px 0;
+  color: #ccc;
+}
+
+/* Formulario */
+.contacto-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ff1a1a;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.contacto-form input:focus,
+.contacto-form textarea:focus {
+  border-color: #ff4d4d;
+  box-shadow: 0 0 10px #ff1a1a;
+  outline: none;
+}
+
+.contacto-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contacto-form button {
+  padding: 12px;
+  background: radial-gradient(circle at top left, #ff1a1a, #660000);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000 inset;
+}
+
+.contacto-form button:hover {
+  background: radial-gradient(circle at bottom right, #ff3333, #990000);
+  box-shadow: 0 0 20px #ff0000, 0 0 40px #ff1a1a inset;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nosotros-content p {
+    padding: 0 10px;
+  }
+
+  .contacto-form {
+    width: 90%;
+  }
+}
+
+.error-form {
+  color: #ff4d4d;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-shadow: 0 0 3px #ff1a1a;
+}

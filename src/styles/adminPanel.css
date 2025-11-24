@@ -1,0 +1,43 @@
+.admin-container {
+  width: 90%;
+  margin: auto;
+  color: white;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background: #202020;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.admin-form input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.admin-form button {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 10px;
+  border-bottom: 1px solid #444;
+}
+
+.btn-delete {
+  background: red;
+  color: white;
+}

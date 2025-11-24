@@ -1,0 +1,94 @@
+:root {
+  /* Paleta de colores personalizados */
+  --primary: #7B2CBF;
+  --secondary: #9D4EDD;
+  --accent: #00F5FF;
+  --dark: #0A0A0B;
+  --light: #F8F9FA;
+  
+  /* Fuentes */
+  --font-gaming: 'Rajdhani', sans-serif;
+  --font-text: 'Inter', sans-serif;
+}
+
+/* Estilos base */
+body {
+  background-color: var(--dark);
+  color: var(--light);
+  font-family: var(--font-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-gaming);
+  color: var(--accent);
+}
+
+/* Catalogo tipo bento responsive con efectos modernos */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.bento-grid > * {
+  background: linear-gradient(145deg, rgba(123, 44, 191, 0.1), rgba(0, 245, 255, 0.05));
+  border: 1px solid rgba(157, 78, 221, 0.2);
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-grid > *:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 245, 255, 0.15);
+}
+
+/* Sidebar responsive con diseño moderno */
+.sidebar-carrito {
+  background: rgba(10, 10, 11, 0.95);
+  backdrop-filter: blur(10px);
+  border-left: 1px solid var(--secondary);
+}
+
+@media (max-width: 768px) {
+  .sidebar-carrito {
+    width: 85vw;
+  }
+}
+
+/* Login modal responsive con estilos gaming */
+.login-form input, 
+.login-form select, 
+.login-form button {
+  background: rgba(123, 44, 191, 0.1);
+  border: 1px solid var(--secondary);
+  border-radius: 8px;
+  color: var(--light);
+  padding: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.login-form button {
+  background: var(--primary);
+  text-transform: uppercase;
+  font-family: var(--font-gaming);
+  letter-spacing: 1px;
+}
+
+.login-form button:hover {
+  background: var(--secondary);
+  box-shadow: 0 0 15px var(--accent);
+}
+
+@media (max-width: 576px) {
+  .login-form input, 
+  .login-form select, 
+  .login-form button {
+    width: 100%;
+    font-size: 14px;
+  }
+  
+  .mini-carrito {
+    font-size: 14px;
+  }
+}

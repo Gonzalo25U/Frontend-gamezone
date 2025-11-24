@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
+.admin-container {
+  font-family: "Orbitron", sans-serif;
+  padding: 40px;
+  background-color: #0b0b0d;
+  color: #fff;
+  min-height: 100vh;
+  box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.2);
+}
+
+.admin-container h2,
+.admin-container h4 {
+  color: #ff0033;
+  text-shadow: 0 0 8px #ff0033, 0 0 16px #ff0033;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.nuevo-producto input,
+.lista-productos input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ff0033;
+  background-color: #1a1a1d;
+  color: #fff;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.nuevo-producto input:focus,
+.lista-productos input:focus {
+  box-shadow: 0 0 10px #ff0033;
+}
+
+.nuevo-producto button,
+.lista-productos button {
+  background: linear-gradient(90deg, #ff0033, #ff004f);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  padding: 8px 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.nuevo-producto button:hover,
+.lista-productos button:hover {
+  box-shadow: 0 0 15px #ff0033;
+  transform: translateY(-2px);
+}
+
+.producto-admin {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: rgba(255, 0, 50, 0.05);
+  border: 1px solid rgba(255, 0, 50, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 0, 50, 0.15);
+}
