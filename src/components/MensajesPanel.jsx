@@ -7,22 +7,24 @@ const MensajesPanel = () => {
   const [modalEliminarMensaje, setModalEliminarMensaje] = useState(null);
 
   useEffect(() => {
-    const mensajesGuardados = JSON.parse(localStorage.getItem("mensajes")) || [];
+    const mensajesGuardados =
+      JSON.parse(localStorage.getItem("mensajes")) || [];
     setMensajes(mensajesGuardados);
   }, []);
 
   const eliminarMensaje = (index) => {
     const nuevosMensajes = mensajes.filter((_, i) => i !== index);
+
     setMensajes(nuevosMensajes);
     localStorage.setItem("mensajes", JSON.stringify(nuevosMensajes));
+
     setModalEliminarMensaje(null);
   };
 
   return (
     <div className="mensajes-panel">
       <h3>
-        <i className="fas fa-envelope"></i> 
-        Mensajes de Contacto
+        <i className="fas fa-envelope"></i> Mensajes de Contacto{" "}
         {mensajes.length > 0 && (
           <span className="mensajes-badge">{mensajes.length}</span>
         )}
@@ -45,13 +47,21 @@ const MensajesPanel = () => {
                   <i className="fas fa-clock"></i> {mensaje.fecha}
                 </span>
               </div>
+
               <p className="mensaje-email">
                 <i className="fas fa-at"></i> {mensaje.email}
               </p>
+
               <p className="mensaje-contenido">{mensaje.mensaje}</p>
-              <button 
+
+              <button
                 className="btn-eliminar"
-                onClick={() => setModalEliminarMensaje({ index, nombre: mensaje.nombre })}
+                onClick={() =>
+                  setModalEliminarMensaje({
+                    index,
+                    nombre: mensaje.nombre
+                  })
+                }
               >
                 <i className="fas fa-trash"></i>
               </button>
@@ -63,7 +73,7 @@ const MensajesPanel = () => {
       {modalEliminarMensaje && (
         <ModalAlert
           titulo="Eliminar Mensaje"
-          mensaje={`¿Estás seguro de eliminar el mensaje de ${modalEliminarMensaje.nombre}?`}
+          mensaje={`¿Seguro deseas eliminar el mensaje de ${modalEliminarMensaje.nombre}?`}
           onConfirm={() => eliminarMensaje(modalEliminarMensaje.index)}
           onCancel={() => setModalEliminarMensaje(null)}
         />

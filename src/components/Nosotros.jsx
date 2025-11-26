@@ -15,14 +15,12 @@ const Nosotros = () => {
   };
 
   const validarEmail = (email) => {
-    // Expresión regular simple para validar email
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validación de campos
     if (!formData.nombre.trim()) {
       setError("El nombre es obligatorio.");
       return;
@@ -36,20 +34,19 @@ const Nosotros = () => {
       return;
     }
 
-    setError(""); // limpiar errores
+    setError("");
 
-    // Leer mensajes existentes de localStorage
     const mensajes = JSON.parse(localStorage.getItem("mensajes")) || [];
 
-    // Agregar el nuevo mensaje
-    mensajes.push({ ...formData, fecha: new Date().toLocaleString() });
+    mensajes.push({
+      ...formData,
+      fecha: new Date().toLocaleString()
+    });
 
-    // Guardar en localStorage
     localStorage.setItem("mensajes", JSON.stringify(mensajes));
 
     alert(`Gracias, ${formData.nombre}! Hemos recibido tu mensaje.`);
-    
-    // Limpiar formulario
+
     setFormData({ nombre: "", email: "", mensaje: "" });
   };
 
@@ -58,23 +55,23 @@ const Nosotros = () => {
       <section id="nosotros" className="nosotros-section">
         <div className="nosotros-header">
           <h2>Sobre Nosotros</h2>
-          <p>GameZone es tu tienda de videojuegos favorita, ofreciendo los últimos lanzamientos y novedades del mundo gaming.</p>
+          <p>
+            GameZone es tu tienda de videojuegos favorita, ofreciendo los últimos
+            lanzamientos y novedades del mundo gaming.
+          </p>
         </div>
+
         <div className="nosotros-content">
           <p>
-            En GameZone nos apasionan los videojuegos y queremos que cada jugador encuentre lo que busca. Nuestro equipo está comprometido con ofrecer productos de calidad y un servicio excepcional.
-          </p>
-          <p>
-            Además, mantenemos a nuestra comunidad informada con noticias actualizadas y recomendaciones de los mejores juegos del momento.
+            En GameZone nos apasionan los videojuegos y queremos que cada
+            jugador encuentre lo que busca.
           </p>
         </div>
       </section>
 
       <section id="contacto" className="contacto-section">
-        <div className="contacto-header">
-          <h2>Contáctanos</h2>
-          <p>Envía tus consultas o sugerencias y te responderemos lo antes posible.</p>
-        </div>
+        <h2>Contáctanos</h2>
+        <p>Envíanos tus consultas o sugerencias.</p>
 
         {error && <p className="error-form">{error}</p>}
 
@@ -101,7 +98,8 @@ const Nosotros = () => {
             value={formData.mensaje}
             onChange={handleChange}
             required
-          />
+          ></textarea>
+
           <button type="submit">Enviar</button>
         </form>
       </section>

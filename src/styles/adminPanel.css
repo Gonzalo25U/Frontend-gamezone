@@ -1,43 +1,173 @@
+:root {
+  --neon-red: #ff0033;
+  --neon-red-glow: 0 0 10px #ff0033, 0 0 20px #ff0033;
+  --bg-dark: #0d0d0d;
+  --bg-card: #1a1a1a;
+  --text-light: #e6e6e6;
+  --radius: 10px;
+  --font: 'Orbitron', sans-serif;
+}
+
+/* CONTENEDOR GENERAL */
 .admin-container {
   width: 90%;
   margin: auto;
-  color: white;
+  padding-top: 50px;
+  color: var(--text-light);
+  font-family: var(--font);
 }
+
+/* TITULOS */
+.admin-container h1,
+.admin-container h2 {
+  text-shadow: var(--neon-red-glow);
+  color: var(--neon-red);
+  letter-spacing: 2px;
+}
+
+
+ /*FORMULARIO*/
 
 .admin-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 20px;
-  background: #202020;
-  border-radius: 10px;
+  gap: 12px;
+  padding: 25px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 0, 50, 0.2);
+  box-shadow: inset 0 0 20px rgba(255, 0, 50, 0.05);
   margin-bottom: 30px;
 }
 
 .admin-form input {
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
+  padding: 12px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 0, 50, 0.4);
+  background: #0f0f0f;
+  color: var(--text-light);
+  font-family: var(--font);
+  transition: 0.3s;
 }
 
-.admin-form button {
-  padding: 10px;
-  cursor: pointer;
+.admin-form input:focus {
+  outline: none;
+  box-shadow: var(--neon-red-glow);
+  border-color: var(--neon-red);
 }
+
+/* BOTONES DEL FORMULARIO */
+.admin-form button {
+  padding: 12px;
+  cursor: pointer;
+  font-family: var(--font);
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  border: 1px solid var(--neon-red);
+  background: transparent;
+  color: var(--neon-red);
+  transition: 0.3s;
+}
+
+.admin-form button:hover {
+  background: var(--neon-red);
+  color: black;
+  box-shadow: var(--neon-red-glow);
+}
+
+/*TABLA DE PRODUCTOS*/
 
 .admin-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(255, 0, 50, 0.2);
 }
 
-.admin-table th,
+.admin-table th {
+  background: #1c1c1c;
+  color: var(--neon-red);
+  padding: 12px;
+  text-shadow: var(--neon-red-glow);
+  letter-spacing: 1px;
+}
+
 .admin-table td {
-  padding: 10px;
-  border-bottom: 1px solid #444;
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 0, 50, 0.15);
 }
 
+.admin-table tr:hover {
+  background: rgba(255, 0, 50, 0.05);
+}
+
+/* BOTONES DE ACCIONES */
+.admin-table button {
+  margin-right: 8px;
+  padding: 8px 12px;
+  font-family: var(--font);
+  border-radius: var(--radius);
+  border: 1px solid var(--neon-red);
+  background: transparent;
+  color: var(--neon-red);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.admin-table button:hover {
+  background: var(--neon-red);
+  color: black;
+  box-shadow: var(--neon-red-glow);
+}
+
+/* BOTÓN ELIMINAR */
 .btn-delete {
-  background: red;
-  color: white;
+  border: 1px solid #ff1a1a !important;
+  color: #ff1a1a !important;
+}
+
+.btn-delete:hover {
+  background: #ff1a1a !important;
+  color: black !important;
+  box-shadow: 0 0 10px #ff1a1a, 0 0 20px #ff1a1a;
+}
+
+/* MENSAJES */
+
+.mensajes-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.mensaje-card {
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 0, 50, 0.25);
+  box-shadow: inset 0 0 20px rgba(255, 0, 50, 0.1);
+  transition: 0.3s;
+}
+
+.mensaje-card:hover {
+  border-color: var(--neon-red);
+  box-shadow: var(--neon-red-glow);
+}
+
+.mensaje-card h4 {
+  color: var(--neon-red);
+  margin-bottom: 6px;
+}
+
+.mensaje-card small {
+  opacity: 0.7;
+  font-size: 0.8rem;
+}
+
+.mensaje-card p {
+  margin: 5px 0;
 }

@@ -16,11 +16,14 @@ export default function AdminPanel() {
     stock: ""
   });
 
-  // -------------------------
-  // Cargar productos al iniciar
-  // -------------------------
+  const [mensajes, setMensajes] = useState([]);
+
+  // Cargar productos y mensajes al iniciar
   useEffect(() => {
     loadProducts();
+
+    const mensajesGuardados = JSON.parse(localStorage.getItem("mensajes")) || [];
+    setMensajes(mensajesGuardados);
   }, []);
 
   async function loadProducts() {
@@ -39,9 +42,6 @@ export default function AdminPanel() {
     }
   }
 
-  // -------------------------
-  // Manejo de formulario
-  // -------------------------
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -58,9 +58,7 @@ export default function AdminPanel() {
     setEditing(null);
   };
 
-  // -------------------------
   // Crear producto
-  // -------------------------
   async function createProduct(e) {
     e.preventDefault();
 
@@ -102,9 +100,6 @@ export default function AdminPanel() {
     }
   }
 
-  // -------------------------
-  // Preparar para editar
-  // -------------------------
   function prepareEdit(product) {
     setEditing(product.id);
     setForm({
@@ -117,14 +112,11 @@ export default function AdminPanel() {
     });
   }
 
-  // -------------------------
-  // Guardar edición
-  // -------------------------
   async function saveEdit(e) {
     e.preventDefault();
 
     try {
-      const response = await apiPut(`/products/${editing}`, {
+      await apiPut(`/products/${editing}`, {
         nombre: form.nombre,
         precio: parseFloat(form.precio),
         genero: form.genero,
@@ -161,9 +153,6 @@ export default function AdminPanel() {
     }
   }
 
-  // -------------------------
-  // Eliminar producto
-  // -------------------------
   async function deleteProduct(id) {
     const confirmResult = await Swal.fire({
       title: "¿Eliminar este producto?",
@@ -202,6 +191,20 @@ export default function AdminPanel() {
       });
     }
   }
+
+  // 🔥 ELIMINAR MENSAJE 🔥
+  const deleteMessage = (index) => {
+    const nuevos = mensajes.filter((_, i) => i !== index);
+    setMensajes(nuevos);
+    localStorage.setItem("mensajes", JSON.stringify(nuevos));
+
+    Swal.fire({
+      icon: "success",
+      title: "Mensaje eliminado",
+      background: "#1e1e1e",
+      color: "#fff"
+    });
+  };
 
   return (
     <div className="admin-container">
@@ -310,6 +313,32 @@ export default function AdminPanel() {
           ))}
         </tbody>
       </table>
+
+      {/* 🔥 NUEVA SECCIÓN: MENSAJES DE CONTACTO 🔥 */}
+      <h2>Mensajes de Contacto</h2>
+
+      {mensajes.length === 0 ? (
+        <p>No hay mensajes todavía.</p>
+      ) : (
+        <div className="mensajes-lista">
+          {mensajes.map((m, i) => (
+            <div key={i} className="mensaje-card">
+              <h4>{m.nombre}</h4>
+              <p><strong>Email:</strong> {m.email}</p>
+              <p>{m.mensaje}</p>
+              <small>{m.fecha}</small>
+
+              <button
+                className="btn-delete"
+                onClick={() => deleteMessage(i)}
+              >
+                Eliminar
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
     </div>
   );
 }
