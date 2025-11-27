@@ -28,7 +28,7 @@ const Login = ({ setUsuarioActivo }) => {
 
       if (typeof setUsuarioActivo === "function") setUsuarioActivo(usuario);
 
-      // 🎉 Alerta según rol
+      
       if (usuario.role === "admin") {
         await Swal.fire({
           icon: "success",
@@ -43,7 +43,7 @@ const Login = ({ setUsuarioActivo }) => {
         await Swal.fire({
           icon: "info",
           title: "Bienvenido",
-          text: `Hola ${usuario.email}, has iniciado sesión como usuario normal.`,
+          text: `Hola ${usuario.email}, has iniciado sesión.`,
           background: "#1e1e1e",
           color: "#fff",
           timer: 2000,
