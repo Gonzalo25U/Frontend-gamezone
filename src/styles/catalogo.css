@@ -5,7 +5,7 @@
   background: radial-gradient(circle at top left, #1a0000, #050505);
   min-height: 100vh;
   color: #fff;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -45,7 +45,7 @@
   gap: 2rem;
   justify-items: center;
   align-items: start;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -59,6 +59,9 @@
   overflow: hidden;
   box-shadow: 0 0 15px rgba(255, 0, 51, 0.2);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .producto-card:hover {
@@ -72,12 +75,14 @@
   height: 200px;
   object-fit: cover;
   border-bottom: 1px solid #ff0033;
+  display: block;
 }
 
 /* Info Productos*/
 .producto-info {
   padding: 1.5rem;
   text-align: center;
+  flex-grow: auto;
 }
 
 /* Contenido Cards */
@@ -103,7 +108,7 @@
 
 /* Btn Agregar */
 .producto-card button {
-  margin: 10px;
+  margin: 20px;
   padding: 8px 12px;
   background: linear-gradient(90deg, #ff0000, #7a0000);
   border: none;

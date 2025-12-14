@@ -81,6 +81,10 @@ export default function AdminPanel({ onClose }) {
 
   async function loadDashboard() {
     try {
+      // DEBUG: verificar token/usuario en localStorage antes de las peticiones
+      console.log("DEBUG localStorage token:", localStorage.getItem("token"));
+      console.log("DEBUG localStorage usuario:", localStorage.getItem("usuario"));
+
       const productosData = await apiGet("/products");
       setProducts(productosData);
 

@@ -1,6 +1,7 @@
 .noticias-section {
   padding: 20px;
-  background-color: #0e0e10; /* fondo oscuro */
+  background-color: #0e0e10;
+  max-width: 100%;
 }
 
 .noticias-header {
