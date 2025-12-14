@@ -84,6 +84,13 @@
   text-align: center;
   flex-grow: auto;
 }
+.producto-info .precio{
+  color: #ff4b4b;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 20px;
+  text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+}
 
 /* Contenido Cards */
 .producto-card .card-body {
@@ -383,3 +390,4 @@
 .modal-card:nth-child(n) {
   animation-delay: calc(0.1s * var(--i));
 }
+
