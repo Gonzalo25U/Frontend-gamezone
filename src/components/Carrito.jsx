@@ -97,7 +97,33 @@ const Carrito = ({ carrito, setCarrito, abierto, cerrar, usuarioActivo, abrirLog
           await eliminarBackend(item.id);
         }
       }
+      // Registrar venta en localStorage para el admin (temporal hasta endpoint backend)
+      const venta = {
+        id: Date.now(),
+        user: usuarioActivo?.email || usuarioActivo?.id || null,
+        items: carrito.map(i => ({ id: i.id, nombre: i.nombre, cantidad: i.cantidad, precio: i.precio })),
+        total: parseFloat(total),
+        fecha: new Date().toISOString()
+      };
+
+      try {
+        const ventasPrev = JSON.parse(localStorage.getItem('ventas')) || [];
+        ventasPrev.push(venta);
+        localStorage.setItem('ventas', JSON.stringify(ventasPrev));
+      } catch (e) {
+        console.error('Error guardando venta en localStorage', e);
+      }
+
       setCarrito([]);
+
+      // Notificar al resto de la app (incluyendo AdminPanel) que hubo una compra
+      try {
+        window.dispatchEvent(new CustomEvent('app:purchase', { detail: venta }));
+      } catch (e) {
+        // en caso de navegadores antiguos, fallback a setItem
+        localStorage.setItem('ventas', JSON.stringify([venta]));
+      }
+
       Swal.fire("Compra exitosa", "Gracias por tu compra.", "success");
       if (typeof cerrar === "function") cerrar();
     }

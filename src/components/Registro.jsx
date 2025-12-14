@@ -85,14 +85,11 @@ const Register = ({ setUsuarioActivo }) => {
           required
         />
 
-        <button type="submit" className="btn-login" disabled={loading}>
+        <button type="submit" className="login-btn" disabled={loading}>
           {loading ? "Registrando..." : "Registrarse"}
         </button>
       </form>
 
-      <p className="register-link">
-        ¿Ya tienes cuenta? <a href="/login">Inicia sesión aquí</a>
-      </p>
     </div>
   );
 };

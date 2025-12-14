@@ -1,7 +1,3 @@
-/* ===========================
-   LOGIN MODAL - NEÓN ROJO
-   =========================== */
-
 :root{
   --neon-red: #ff0033;
   --neon-red-deep: #d1002a;
@@ -96,7 +92,7 @@
 
 /* Botón principal: degradado neón rojo */
 .login-btn {
-  width: 100%;
+  width: 50%;
   padding: 0.95rem;
   border-radius: 12px;
   border: none;
@@ -186,4 +182,18 @@
   0% { transform: translateY(8px) scale(0.98); opacity: 0; }
   60% { transform: translateY(-4px) scale(1.01); opacity: 1; }
   100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+
+.cerrar-modal {
+  top: 10px;
+  right: 15px;
+  background: #ff1a1a;
+  border: none;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff1a1a inset;
+  transition: all 0.3s ease;
 }

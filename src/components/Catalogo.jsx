@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { apiGet } from "../service/api";   // helper GET con backend
 import "../styles/catalogo.css";
 
-const Catalogo = ({ agregarAlCarrito }) => {
+const Catalogo = ({ agregarAlCarrito, apiGetFn = apiGet }) => {
   const [productos, setProductos] = useState([]);
   const [modalAbierto, setModalAbierto] = useState(false);
   const [cargando, setCargando] = useState(true);
@@ -12,7 +12,7 @@ const Catalogo = ({ agregarAlCarrito }) => {
   const cargarProductos = async () => {
     try {
       setCargando(true);
-      const data = await apiGet("/products");
+      const data = await apiGetFn("/products");
       setProductos(data);
       setError(null);
     } catch (err) {

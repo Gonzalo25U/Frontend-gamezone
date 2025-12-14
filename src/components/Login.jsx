@@ -72,6 +72,7 @@ const Login = ({ setUsuarioActivo }) => {
       <h2>Iniciar Sesión</h2>
 
       <form onSubmit={handleSubmit} className="login-form">
+        
         <label>Email</label>
         <input
           type="email"
@@ -79,6 +80,7 @@ const Login = ({ setUsuarioActivo }) => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
+        
 
         <label>Contraseña</label>
         <input
@@ -88,14 +90,12 @@ const Login = ({ setUsuarioActivo }) => {
           required
         />
 
-        <button type="submit" className="btn-login" disabled={loading}>
+        <button type="submit" className="login-btn" disabled={loading}>
           {loading ? "Ingresando..." : "Ingresar"}
         </button>
       </form>
+      
 
-      <p className="register-link">
-        ¿No tienes cuenta? <a href="/register">Regístrate aquí</a>
-      </p>
     </div>
   );
 };

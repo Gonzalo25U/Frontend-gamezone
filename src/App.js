@@ -7,7 +7,7 @@ import Login from "./components/Login";
 import Registro from "./components/Registro";
 import Carrito from "./components/Carrito";
 import Footer from "./components/Footer";
-import AdminPanel from "./components/AdminPanel";
+import AdminPanel from "./components/admin/AdminPanel";
 
 import "./styles/modal.css";
 
@@ -22,11 +22,32 @@ function App() {
 
   // Cargar usuario y carrito desde backend / localStorage
   useEffect(() => {
-    const usuario = JSON.parse(localStorage.getItem("usuario"));
-    if (usuario) setUsuarioActivo(usuario);
+    try {
+      const raw = JSON.parse(localStorage.getItem("usuario"));
+      if (raw) {
+        const roleSource = (
+          raw.role || raw.rol || (Array.isArray(raw.roles) && raw.roles[0]) || ""
+        ).toString();
 
-    const carritoLS = JSON.parse(localStorage.getItem("carrito")) || [];
-    setCarrito(carritoLS);
+        const isAdmin = roleSource.toLowerCase().includes("admin");
+
+        const normalized = {
+          ...raw,
+          role: isAdmin ? "admin" : "usuario",
+          rol: isAdmin ? "admin" : "usuario",
+          nombre: raw.nombre || raw.username || raw.name || raw.email || ""
+        };
+
+        setUsuarioActivo(normalized);
+      }
+
+      const carritoLS = JSON.parse(localStorage.getItem("carrito")) || [];
+      setCarrito(carritoLS);
+    } catch (err) {
+      console.error("Error parseando localStorage en App.js:", err);
+      setUsuarioActivo(null);
+      setCarrito([]);
+    }
   }, []);
 
   // Agregar al carrito (UI + backend si hay usuario)
@@ -59,14 +80,8 @@ function App() {
         setAdminAbierto={setAdminAbierto}
       />
 
-      {usuarioActivo?.role === "ROLE_ADMIN" && (
-        <>
-          <AdminPanel abierto={adminAbierto} cerrar={() => setAdminAbierto(false)} />
-          <div
-            className={`sidebar-overlay ${adminAbierto ? "visible" : ""}`}
-            onClick={() => setAdminAbierto(false)}
-          />
-        </>
+      {usuarioActivo?.rol === "admin" && adminAbierto && (
+        <AdminPanel onClose={() => setAdminAbierto(false)} />
       )}
 
       <Carrito

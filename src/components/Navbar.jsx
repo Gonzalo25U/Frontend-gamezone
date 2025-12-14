@@ -12,12 +12,14 @@ const Navbar = ({
 }) => {
   const handleLogout = () => {
     setUsuarioActivo(null);
-    localStorage.removeItem("usuarioActivo");
+    // Limpiar la clave correcta en localStorage
+    localStorage.removeItem("usuario");
+    localStorage.removeItem("token");
   };
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">
+      <div className="navbar-logo" onClick={() => window.location.reload()}>
         <img src={logo} alt="GameZone Logo" />
         <span>GameZone</span>
       </div>
